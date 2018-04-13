@@ -95,7 +95,7 @@ TEST_F(QueryProcessorTest, QueryProcessorWhereInvokeInvalidQuery) {
 
   EXPECT_CALL(*storage, getWsvQuery()).WillRepeatedly(Return(wsv_queries));
   EXPECT_CALL(*storage, getBlockQuery()).WillRepeatedly(Return(block_queries));
-  EXPECT_CALL(*wsv_queries, getAccountWithKeysOnly(account_id))
+  EXPECT_CALL(*wsv_queries, getAccount(account_id))
       .WillOnce(Return(shared_account));
   EXPECT_CALL(*wsv_queries, getAccountRoles(account_id))
       .Times(2)

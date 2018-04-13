@@ -200,7 +200,7 @@ TEST_F(ToriiQueriesTest, FindAccountWhenHasReadPermissions) {
       .WillOnce(Return(true));
 
   // Should be called once, after successful stateful validation
-  EXPECT_CALL(*wsv_query, getAccountWithKeysOnly(accountB->accountId()))
+  EXPECT_CALL(*wsv_query, getAccount(accountB->accountId()))
       .WillOnce(Return(accountB));
 
   std::vector<std::string> roles = {"user"};
@@ -233,7 +233,7 @@ TEST_F(ToriiQueriesTest, FindAccountWhenHasRolePermission) {
       shared_model::proto::AccountBuilder().accountId("accountA").build());
 
   auto creator = "a@domain";
-  EXPECT_CALL(*wsv_query, getAccountWithKeysOnly(creator))
+  EXPECT_CALL(*wsv_query, getAccount(creator))
       .WillOnce(Return(account));
   EXPECT_CALL(*wsv_query, getSignatories(creator))
       .WillRepeatedly(Return(signatories));

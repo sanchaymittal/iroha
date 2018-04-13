@@ -152,7 +152,7 @@ TEST_F(GetAccountTest, MyAccountValidCase) {
       .WillRepeatedly(Return(admin_roles));
   EXPECT_CALL(*wsv_query, getRolePermissions(admin_role))
       .WillOnce(Return(role_permissions));
-  EXPECT_CALL(*wsv_query, getAccountWithKeysOnly(admin_id))
+  EXPECT_CALL(*wsv_query, getAccount(admin_id))
       .WillOnce(Return(creator));
   auto response = validateAndExecute(query);
   auto cast_resp =
@@ -177,7 +177,7 @@ TEST_F(GetAccountTest, AllAccountValidCase) {
       .WillOnce(Return(admin_roles));
   EXPECT_CALL(*wsv_query, getRolePermissions(admin_role))
       .WillOnce(Return(role_permissions));
-  EXPECT_CALL(*wsv_query, getAccountWithKeysOnly(account_id))
+  EXPECT_CALL(*wsv_query, getAccount(account_id))
       .WillOnce(Return(account));
   EXPECT_CALL(*wsv_query, getAccountRoles(account_id))
       .WillOnce(Return(admin_roles));
@@ -204,7 +204,7 @@ TEST_F(GetAccountTest, DomainAccountValidCase) {
       .WillOnce(Return(admin_roles));
   EXPECT_CALL(*wsv_query, getRolePermissions(admin_role))
       .WillOnce(Return(role_permissions));
-  EXPECT_CALL(*wsv_query, getAccountWithKeysOnly(account_id))
+  EXPECT_CALL(*wsv_query, getAccount(account_id))
       .WillOnce(Return(account));
   EXPECT_CALL(*wsv_query, getAccountRoles(account_id))
       .WillOnce(Return(admin_roles));
@@ -236,7 +236,7 @@ TEST_F(GetAccountTest, GrantAccountValidCase) {
       hasAccountGrantablePermission(admin_id, account_id, can_get_my_account))
       .WillOnce(Return(true));
 
-  EXPECT_CALL(*wsv_query, getAccountWithKeysOnly(account_id))
+  EXPECT_CALL(*wsv_query, getAccount(account_id))
       .WillOnce(Return(account));
   EXPECT_CALL(*wsv_query, getAccountRoles(account_id))
       .WillOnce(Return(admin_roles));
@@ -294,7 +294,7 @@ TEST_F(GetAccountTest, NoAccountExist) {
   EXPECT_CALL(*wsv_query, getRolePermissions(admin_role))
       .WillOnce(Return(role_permissions));
 
-  EXPECT_CALL(*wsv_query, getAccountWithKeysOnly("none"))
+  EXPECT_CALL(*wsv_query, getAccount("none"))
       .WillOnce(Return(boost::none));
   EXPECT_CALL(*wsv_query, getAccountRoles("none"))
       .WillOnce(Return(boost::none));
