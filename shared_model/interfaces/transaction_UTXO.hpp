@@ -1,0 +1,8 @@
+//
+// Created by sanchay on 1/8/18.
+//
+
+#ifndef IROHA_TRANSACTION_UTXO_HPP
+#define IROHA_TRANSACTION_UTXO_HPP
+
+#endif //IROHA_TRANSACTION_UTXO_HPP
