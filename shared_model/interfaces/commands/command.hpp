@@ -38,6 +38,7 @@
 #include "interfaces/commands/set_quorum.hpp"
 #include "interfaces/commands/subtract_asset_quantity.hpp"
 #include "interfaces/commands/transfer_asset.hpp"
+#include "interfaces/commands/transfer_asset_UTXO.hpp"
 #include "utils/polymorphic_wrapper.hpp"
 #include "utils/visitor_apply_for_all.hpp"
 
@@ -75,7 +76,8 @@ namespace shared_model {
                                       SetAccountDetail,
                                       SetQuorum,
                                       SubtractAssetQuantity,
-                                      TransferAsset>;
+                                      TransferAsset,
+                                      TransferAssetUTXO>;
 
       /// Types of concrete commands, in attached variant
       using CommandListType = CommandVariantType::types;
