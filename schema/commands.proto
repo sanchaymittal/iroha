@@ -58,6 +58,14 @@ message TransferAsset {
     Amount amount = 5;
 }
 
+message TransferAssetUTXO {
+    string src_account_id = 1;
+    string dest_account_id = 2;
+    string asset_id = 3;
+    string description = 4;
+    Amount amount = 5;
+}
+
 message AppendRole {
     string account_id = 1;
     string role_name = 2;
